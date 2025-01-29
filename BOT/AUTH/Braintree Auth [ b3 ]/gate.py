@@ -108,7 +108,7 @@ async def create_braintree_auth(fullz , session):
         if response.status_code == 200:
             with open('Creds.txt','a') as f:
                 f.write(email+':'+'Esahatam2009@')
-                        return session
+                        
         else:
             
             return None
