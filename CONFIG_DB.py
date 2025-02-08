@@ -1,7 +1,7 @@
 import pymongo
 
 client = pymongo.MongoClient(
-        "set-your-mongo-url"
+        "mongodb+srv://SiestaXMusic:BGMI272@cluster0.nik6j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 )
 
 result = str(client)
